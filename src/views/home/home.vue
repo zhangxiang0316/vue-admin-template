@@ -6,10 +6,10 @@
 <template>
   <div class="home">
     <div class="fixed-header">
-      <mHeader />
+      <mHeader style="margin: 0 auto" />
     </div>
-    <div v-for="item in 100" :key="item">
-      {{ item }}
+    <div class="main">
+      <router-view />
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
 @import '~@/styles/mixin.scss';
 @import "~@/styles/variables.scss";
 .home{
+  min-width: 1000px;
   .fixed-header {
     position: fixed;
     top: 0;
@@ -49,6 +50,10 @@ export default {
     background: #181f41;
     height: 50px;
     transition: width 0.28s;
+  }
+  .main{
+    min-height: calc(100vh - 50px);
+    padding-top: 50px;
   }
 }
 </style>

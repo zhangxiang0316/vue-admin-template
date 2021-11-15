@@ -40,7 +40,20 @@ export const constantRoutes = [
   {
     path: '/home',
     component: () => import('@/views/home/home'),
-    hidden: true
+    redirect: '/home/index',
+    hidden: true,
+    children: [
+      {
+        path: 'index',
+        name: '首页',
+        component: () => import('@/views/home/index')
+      },
+      {
+        path: 'boutique',
+        name: '精品',
+        component: () => import('@/views/home/boutique')
+      }
+    ]
   },
 
   {

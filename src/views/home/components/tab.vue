@@ -40,6 +40,7 @@ export default {
   methods: {
     tabClick(tab, index) {
       this.selectIndex = index
+      this.$router.push({ path: tab.path })
     }
   }
 }
@@ -50,9 +51,10 @@ export default {
   display: flex;
   .tab-item{
     color: white;
+    min-width: 32px;
     cursor: pointer;
-    margin-left: 50px;
-    line-height: 47px;
+    margin-left: 30px;
+    line-height: 48px;
   }
   .tab-item-select{
     border-bottom: 3px solid white;

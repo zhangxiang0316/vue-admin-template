@@ -6,10 +6,10 @@
 <template>
   <div class="header">
     <div class="content">
-      <div style="font-size: 25px">Demo</div>
-      <tab :tabs="[{name:'首页'},{name:'精品'},{name:'发现'}]" />
+      <div style="font-size: 25px;cursor: pointer" @click="$router.push({path:'/home/index'})">Demo</div>
+      <tab :tabs="[{name:'首页',path:'/home/index'},{name:'精品',path:'/home/boutique'},{name:'发现'}]" />
       <el-input>
-        <i slot="suffix" class="el-icon-search search"></i>
+        <i slot="suffix" class="el-icon-search search" />
       </el-input>
       <el-button style="height: 35px;margin-top: 7px;margin-left: 20px" round>查找</el-button>
     </div>
@@ -39,30 +39,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep  .el-input__inner{
-  border-radius: 30px;
-  height: 35px;
-  border: 1px solid transparent;
-  background: #464C67;
-}
 
-::v-deep .el-input{
-  width: 300px;
-  height: 35px;
-  margin-left: 100px;
-}
-::v-deep .el-button.is-round{
-  padding: 7px 23px;
-}
 .header{
-  background: #181f41;
   height: 50px;
+  max-width: 1000px;
   line-height: 50px;
   color: white;
   .content{
-    width: 70%;
     margin: 0 auto;
     display: flex;
+  }
+  ::v-deep  .el-input__inner{
+    border-radius: 30px;
+    width: 300px;
+    height: 35px;
+    border: 1px solid transparent;
+    background: #ffffff22;
+  }
+  ::v-deep .el-input{
+    width: 300px;
+    height: 35px;
+    margin-left: 50px;
+  }
+  ::v-deep .el-button.is-round{
+    padding: 7px 23px;
   }
   .search{
     font-size: 16px;

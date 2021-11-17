@@ -40,6 +40,7 @@ export default {
 @import '~@/styles/mixin.scss';
 @import "~@/styles/variables.scss";
 .home{
+  height: 100%;
   min-width: 1000px;
   .fixed-header {
     position: fixed;
@@ -52,7 +53,7 @@ export default {
     transition: width 0.28s;
   }
   .main{
-    min-height: calc(100vh - 50px);
+    height: 100% ;
     padding-top: 50px;
   }
 }

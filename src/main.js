@@ -33,8 +33,12 @@ Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 
-Vue.config.productionTip = false
+import api from './http/api'
+import { message } from './utils/message'
 
+Vue.config.productionTip = false
+Vue.prototype.$api = api
+Vue.prototype.$message = message
 new Vue({
   el: '#app',
   router,

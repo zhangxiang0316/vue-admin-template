@@ -6,18 +6,34 @@
 <template>
   <div class="homeItem">
     <div class="title">{{ detail.title }}</div>
-    <detail-disc :introduce="detail.disc" class="disc" />
+    <!--    <detail-disc :value="detail.disc" class="disc" :index="index" />-->
+    <v-clamp :max-lines="3" style="font-size: 15px;color: #666">
+      {{ detail.disc }}
+      <button
+        v-show="clamped"
+        slot="after"
+        slot-scope="{ expand, collapse, toggle, clamped }"
+        class="toggle btn btn-sm"
+        @click="toggle"
+      > 展开</button>
+    </v-clamp>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import detailDisc from '@/views/home/components/detailDisc'
+import VClamp from 'vue-clamp'
 export default {
   name: 'HomeItem',
   components: {
-    detailDisc
+    detailDisc,
+    VClamp
   },
   props: {
+    index: {
+      type: Number,
+      default: -1
+    },
     detail: {
       type: Object,
       default: () => {
@@ -26,7 +42,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      expanded: false
+    }
   },
   computed: {},
   activated() {
@@ -35,7 +53,11 @@ export default {
   },
   created() {
   },
-  methods: {}
+  methods: {
+    toggle(e) {
+      console.log(e)
+    }
+  }
 }
 </script>
 

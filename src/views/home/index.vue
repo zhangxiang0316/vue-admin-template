@@ -6,7 +6,7 @@
 <template>
   <div class="index">
     <div style="flex:2;overflow-y: scroll;height: 100%">
-      <home-item v-for="(item,index) in list" :key="index" :detail="item" />
+      <home-item v-for="(item,index) in list" :key="index" :detail="item"  :index="index"/>
     </div>
     <div style="flex: 1">dsfsfsf</div>
   </div>

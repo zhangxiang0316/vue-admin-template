@@ -4,14 +4,11 @@
 * 备注：
 */
 <template>
-  <div class="detailDisc">
-    <div :class="showTotal ? 'total-introduce' : 'detailed-introduce'">
-      <div ref="desc" class="intro-content" :title="introduce">
-        <span v-if="introduce" class="merchant-desc">{{ introduce }}</span>
-        <div v-if="showExchangeButton" class="unfold" @click="showTotalIntro">
-          <p>{{ exchangeButton ? '展开' : '收起' }}</p>
-        </div>
-      </div>
+  <div class="wrapper">
+    <input :id="`exp${index}`" class="exp" type="checkbox">
+    <div class="text">
+      <label class="btn" :for="`exp${index}`" />
+      {{ value }}
     </div>
   </div>
 </template>
@@ -20,117 +17,101 @@
 export default {
   name: 'DetailDisc',
   props: {
-    introduce: {
+    index: {
+      type: Number,
+      default: -1
+    },
+    value: { // 文字
       type: String,
       default: ''
+    },
+    theBackgroundColor: { // 文字伪类背景颜色
+      type: String,
+      default: '#f9f9f9'
     }
   },
   data() {
     return {
-      showTotal: false, // 简介全部显示
-      exchangeButton: true, // 展开/收起文字改变
-      showExchangeButton: false // 是否显示 展开/收起 文字
+
     }
   },
   watch: {
   },
   methods: {
-    showTotalIntro() {
-      this.showTotal = !this.showTotal
-      this.exchangeButton = !this.exchangeButton
-    }
+
   }
 }
 </script>
 
 <style scoped lang="scss">
-.total-introduce{
-  height: auto;
+.wrapper {
+  width: 100%;
+  display: flex;
   overflow: hidden;
   font-size: 15px;
   color: #666;
-  .intro-content{
-    .merchant-desc{
-      width: 100%;
-      line-height: 20px;
-    }
-  }
-  .unfold{
-    display: block;
-    float: right;
-    width: 80px;
-    height: 20px;
-    z-index: 8;
-    text-align: center;
-    p{
-      margin: 0;
-      line-height: 20px;
-      color: #0098ff;
-    }
-  }
 }
-.detailed-introduce{
+.text {
   font-size: 15px;
-  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
   position: relative;
-  overflow: hidden;
-  .intro-content{
-    //最大高度设为3倍的行间距
-    max-height: 60px;
-    line-height: 20px;
-    word-wrap: break-word;
-    word-break: break-all;
-    background-color: #fff;
-    color: #fff;
-    overflow: hidden;
-    .merchant-desc{
-      width: 100%;
-      line-height: 20px;
-    }
-    &::after,
-    &::before{
-      content: attr(title);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      color: #666;
-    }
-    &::before{
-      display: block;
-      overflow: hidden;
-      z-index: 1;
-      max-height: 60px;
-      background: #FFF;
-    }
-    &::after{
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      height: 60px;
-      // 截取行数
-      -webkit-line-clamp: 3;
-      text-overflow: ellipsis;
-      box-sizing: border-box;
-      // 行首缩进字符数，值为[(截取行数-1)*尾部留空字符数]
-      text-indent: -6em;
-      // 尾部留空字符数
-      padding-right: 3em;
-
-    }
-    .unfold {
-      z-index: 8;
-      width: 80px;
-      height: 20px;
-      outline: 0;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      text-align: center;
-      p {
-        margin: 0;
-        color: #0098ff;
-      }
-    }
-  }
+  line-height: 21px;
+  max-height: 63px;
+  transition: .3s max-height;
 }
+.text::before {
+  content: '';
+  height: calc(100% - 26px);
+  float: right;
+}
+.text::after {
+  content: '';
+  width: 999vw;
+  height: 999vw;
+  position: absolute;
+  box-shadow: inset calc(100px - 999vw) calc(30px - 999vw) 0 0 #fff;
+  margin-left: -100px;
+}
+.btn{
+  position: relative;
+  float: right;
+  clear: both;
+  margin-left: 20px;
+  font-size: 15px;
+  padding: 0 8px;
+  background: #3F51B5;
+  height:20px;
+  line-height: 20px;
+  border-radius: 4px;
+  color:  #fff;
+  cursor: pointer;
+}
+.btn::after{
+  content:'展开'
+}
+.exp{
+  display: none;
+}
+.exp:checked+.text{
+  max-height: none;
+}
+.exp:checked+.text::after{
+  visibility: hidden;
+}
+.exp:checked+.text .btn::before{
+  visibility: hidden;
+}
+.exp:checked+.text .btn::after{
+  content:'收起'
+}
+.btn::before{
+  content: '...';
+  position: absolute;
+  left: -5px;
+  color: #333;
+  transform: translateX(-100%)
+}
+
 </style>

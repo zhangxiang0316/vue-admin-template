@@ -47,7 +47,7 @@ export default {
 <style scoped lang="scss">
 .index {
   height: 100%;
-  min-width: 1000px;
+  //min-width: 1000px;
 
   .fixed-header {
     position: fixed;
@@ -61,8 +61,11 @@ export default {
   }
 
   .main {
-    height: calc(100% - 50px);
-    padding-top: 50px;
+    min-height: calc(100vh - 50px);
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
   }
 }
 </style>

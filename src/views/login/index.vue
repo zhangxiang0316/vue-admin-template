@@ -11,7 +11,7 @@
     <el-card style="width: 350px;position: absolute;right: 20%;top:20%">
       <div style="border-bottom: 2px solid #67C23A;font-weight: 550;font-size: 16px;width: 65px;padding: 10px 0"> 快捷登录
       </div>
-      <el-form :model="loginForm" style="padding: 30px 0">
+      <el-form :model="loginForm" style="padding: 30px 0" ref="loginForm">
         <el-form-item>
           <el-input v-model="loginForm.phone" placeholder="请输入手机号">
             <template slot="prepend">+86</template>

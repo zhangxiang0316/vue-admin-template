@@ -8,15 +8,29 @@
         <div style="font-size: 16px;margin: 0 10px;font-weight: 800">原子回声</div>
       </div>
     </div>
-    <el-card style="height: 400px;width: 350px;position: absolute;right: 20%;top:20%">
-      <el-form :model="loginForm">
+    <el-card style="width: 350px;position: absolute;right: 20%;top:20%">
+      <div style="border-bottom: 2px solid #67C23A;font-weight: 550;font-size: 16px;width: 65px;padding: 10px 0"> 快捷登录
+      </div>
+      <el-form :model="loginForm" style="padding: 30px 0">
         <el-form-item>
-          <el-input placeholder="请输入手机号" v-model="loginForm.phone">
+          <el-input v-model="loginForm.phone" placeholder="请输入手机号">
             <template slot="prepend">+86</template>
           </el-input>
-
         </el-form-item>
-
+        <el-form-item>
+          <el-input v-model="loginForm.code" placeholder="请输入短信验证码">
+            <template slot="append">
+              <el-button :disabled="codeSecond!==60" style="width: 140px;" @click="getCode">{{ getCodeBtn }}</el-button>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="success" style="width: 100%;">登录</el-button>
+        </el-form-item>
+        <el-form-item style="text-align: center">
+          <span>没有账号？</span>
+          <span style="color: #67C23A;cursor: pointer">联系管理员</span>
+        </el-form-item>
       </el-form>
     </el-card>
   </div>
@@ -34,7 +48,9 @@ export default {
       },
       loading: false,
       passwordType: 'password',
-      redirect: undefined
+      redirect: undefined,
+      getCodeBtn: '获取短信验证码',
+      codeSecond: 60
     }
   },
   watch: {
@@ -46,6 +62,17 @@ export default {
     }
   },
   methods: {
+    getCode() {
+      this.timer = setInterval(() => {
+        if (this.codeSecond > 0) {
+          this.getCodeBtn = this.codeSecond--
+        } else {
+          this.getCodeBtn = '获取短信验证码'
+          this.codeSecond = 60
+          window.clearInterval(this.timer)
+        }
+      }, 1000)
+    },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
@@ -92,6 +119,10 @@ export default {
   width: 100%;
   background-color: #fff;
   overflow: hidden;
+
+  ::v-deep .el-card {
+    border-radius: 10px;
+  }
 
 }
 </style>

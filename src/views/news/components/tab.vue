@@ -36,9 +36,15 @@ export default {
     }
   },
   computed: {},
+  watch: {
+    $route(val) {
+      this.selectIndex = this.tabs.findIndex(item => item.path === val.path)
+    }
+  },
   activated() {
   },
   mounted() {
+    this.selectIndex = this.tabs.findIndex(item => item.path === this.$route.path)
   },
   created() {
   },

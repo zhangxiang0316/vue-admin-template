@@ -33,6 +33,7 @@ export default {
     }
   },
   computed: {},
+
   activated() {
   },
   mounted() {

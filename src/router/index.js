@@ -37,21 +37,40 @@ export const constantRoutes = [
     hidden: true
   },
 
+  // {
+  //   path: '/home',
+  //   component: () => import('@/views/home/home'),
+  //   redirect: '/home/index',
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: '首页',
+  //       component: () => import('@/views/home/index')
+  //     },
+  //     {
+  //       path: 'boutique',
+  //       name: '精品',
+  //       component: () => import('@/views/home/boutique')
+  //     }
+  //   ]
+  // },
   {
-    path: '/home',
-    component: () => import('@/views/home/home'),
-    redirect: '/home/index',
+    path: '/news',
+    name: '消息',
+    redirect: '/news/index',
     hidden: true,
+    component: () => import('@/views/news/layout/index'),
     children: [
       {
         path: 'index',
-        name: '首页',
-        component: () => import('@/views/home/index')
+        name: '资讯摘要',
+        component: () => import('@/views/news/home/index')
       },
       {
-        path: 'boutique',
-        name: '精品',
-        component: () => import('@/views/home/boutique')
+        path: 'analysis',
+        name: '数据分析',
+        component: () => import('@/views/news/home/analysis')
       }
     ]
   },

@@ -39,7 +39,7 @@ export default {
         { 'name': '河北', 'value': 15 },
         { 'name': '河南', 'value': 0 },
         { 'name': '云南', 'value': 0 },
-        { 'name': '辽宁', 'value': 19},
+        { 'name': '辽宁', 'value': 19 },
         { 'name': '黑龙江', 'value': 0 },
         { 'name': '湖南', 'value': 0 },
         { 'name': '安徽', 'value': 0 },

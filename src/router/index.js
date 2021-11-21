@@ -74,6 +74,25 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/test',
+    name: '消息',
+    redirect: '/test/index',
+    hidden: true,
+    component: () => import('@/views/test/news/layout/index'),
+    children: [
+      {
+        path: 'index',
+        name: '资讯摘要',
+        component: () => import('@/views/test/news/home/index')
+      },
+      {
+        path: 'analysis',
+        name: '数据分析',
+        component: () => import('@/views/test/news/home/analysis')
+      }
+    ]
+  },
 
   {
     path: '/404',

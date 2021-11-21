@@ -5,28 +5,22 @@
 */
 <template>
   <div class="analysis">
-    <template v-for="(item,index) in list">
-      <map-chart v-if="index==1" :id="`line-chart${index}`" ref="lineChart" :key="index" style="margin: 1%;width: 31%;float: left" />
-      <line-chart
-        v-else
-        :id="`line-chart${index}`"
-        ref="lineChart"
-        :key="index"
-        style="margin: 1%;width: 31%;float: left"
-      />
-    </template>
+    <line-chart
+      v-for="(item,index) in list"
+      :id="`line-chart${index}`"
+      :key="index"
+      ref="lineChart"
+      style="margin: 1%;width: 31%;float: left"
+    />
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import lineChart from '@/views/news/components/lineChart'
-import mapChart from '@/views/news/components/mapChart'
-
+import lineChart from '@/views/test/news/components/lineChart'
 export default {
   name: 'Analysis',
   components: {
-    lineChart,
-    mapChart
+    lineChart
   },
   props: {},
   data() {

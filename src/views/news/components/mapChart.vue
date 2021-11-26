@@ -4,10 +4,11 @@
 * 备注：
 */
 <template>
-  <el-card :body-style="{padding:'10px'}">
+  <el-card :body-style="{padding:'0px'}">
     <div
       :id="id"
-      style=" height: 300px; width: 100%;"
+      style=" width: 100%;"
+      :style="{height:this.height}"
     />
   </el-card>
 </template>
@@ -16,9 +17,9 @@
 import * as echarts from 'echarts'
 import './map/js/china.js' // 引入中国地图数据
 // 还要特别引入china.json，这样中国地图才会出现，不然只会出现右下角的南海诸岛
-import china from './map/json/china.json'
+// import china from './map/json/china.json'
 
-echarts.registerMap('china', china)
+// echarts.registerMap('china', china)
 export default {
   name: 'MapChart',
   components: {},
@@ -26,6 +27,10 @@ export default {
     id: {
       type: String,
       default: 'map-chart'
+    },
+    height: {
+      type: String,
+      default: '300px'
     }
   },
   data() {
@@ -73,14 +78,14 @@ export default {
   activated() {
   },
   mounted() {
-
+    document.getElementById(this.id).offsetHeight
   },
   created() {
   },
   methods: {
     initChart() {
       const chartDom = document.getElementById(this.id)
-      const myChart = echarts.init(chartDom)
+      this.myChart = echarts.init(chartDom)
       let option = null
 
       option = {
@@ -96,7 +101,7 @@ export default {
         dataRange: { // 地图颜色深浅
           orient: 'horizontal',
           min: 0,
-          max: 8000,
+          max: 80,
           show: false
         },
         selectedMode: 'single',
@@ -130,7 +135,8 @@ export default {
           }
         ]
       }
-      option && myChart.setOption(option)
+      this.myChart.resize({ height: this.height })
+      option && this.myChart.setOption(option)
     }
   }
 }

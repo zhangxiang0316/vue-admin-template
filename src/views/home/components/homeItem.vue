@@ -21,12 +21,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-import detailDisc from '@/views/home/components/detailDisc'
+// import detailDisc from '@/views/home/components/detailDisc'
 import VClamp from 'vue-clamp'
 export default {
   name: 'HomeItem',
   components: {
-    detailDisc,
+    // detailDisc,
     VClamp
   },
   props: {

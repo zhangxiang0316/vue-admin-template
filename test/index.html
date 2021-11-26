@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      height: 100%;
+      margin: 0;
+      padding: 0
+    }
+    html {
+      height: 100%;
+    }
+    .parent {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      grid-auto-rows: minmax(100px, auto);
+    }
+
+    .div1 { grid-area: 1 / 1 / 2 / 25; }
+    .div2 { grid-area: 2 / 1 / 5 / 7; }
+    .div3 { grid-area: 5 / 1 / 8 / 7; }
+    .div4 { grid-area: 8 / 1 / 11 / 7; }
+    .div5 { grid-area: 2 / 19 / 5 / 25; }
+    .div6 { grid-area: 5 / 19 / 8 / 25; }
+    .div7 { grid-area: 8 / 19 / 11 / 25; }
+    .div8 { grid-area: 2 / 7 / 8 / 19; }
+    .div9 { grid-area: 8 / 7 / 11 / 13; }
+    .div10 { grid-area: 8 / 13 / 11 / 19; }
+  </style>
+</head>
+<body>
+<div class="parent">
+  <div class="div1" style="background: #2EC13C">1</div>
+  <div class="div2"  style="background: #2E413C">2 </div>
+  <div class="div3"  style="background: #2E663C"> 3</div>
+  <div class="div4"  style="background: #2E553C"> 4</div>
+  <div class="div5"  style="background: #25C13C">5 </div>
+  <div class="div6"  style="background: #2E453C"> 6</div>
+  <div class="div7"  style="background: #24553C">7 </div>
+  <div class="div8"  style="background: #24413C">8 </div>
+  <div class="div9"  style="background: #45C13C"> 9</div>
+  <div class="div10"  style="background: #22C13C">10 </div>
+</div>
+</body>
+</html>

@@ -56,6 +56,11 @@ export const constantRoutes = [
   //   ]
   // },
   {
+    path: '/test',
+    name: '数据分析',
+    component: () => import('@/views/news/home/test')
+  },
+  {
     path: '/news',
     name: '消息',
     redirect: '/news/index',
@@ -71,7 +76,8 @@ export const constantRoutes = [
         path: 'analysis',
         name: '数据分析',
         component: () => import('@/views/news/home/analysis')
-      }
+      },
+
     ]
   },
   {
